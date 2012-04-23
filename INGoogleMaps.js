@@ -5,6 +5,15 @@
  *
  * INGoogleMaps is an Utility collection to make the use of Google Maps very easy
  *
+ * First of all you need an API KEY
+ * Look at: https://developers.google.com/maps/documentation/javascript/tutorial#api_key
+ * Then you will insert a tiny script in the page: head or body is not important
+ *
+ * <script type="text/javascript">
+ *     var in_googleApiKey = "YOUR_GOOGLE_KEY";
+ * </script>
+ *
+ *
  * DECLARING A MAP:
  *
  * To create a Map you have to declare a <div> element that must have class "in_GoogleMap",
@@ -54,6 +63,12 @@
  *
  * <html>
  *     <head>
+ *         .
+ *         .
+ *         .
+ *          <script type="text/javascript">
+ *              var in_googleApiKey = "YOUR_GOOGLE_KEY";
+ *          </script>
  *         .
  *         .
  *         .
