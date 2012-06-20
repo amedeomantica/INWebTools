@@ -1,7 +1,7 @@
 /** INGoogleMaps.js
  * @author Amedeo Mantica
  * @copyright Amedeo Mantica
- * @version 0.1
+ * @version 0.2
  *
  * INGoogleMaps is an Utility collection to make the use of Google Maps very easy
  *
@@ -118,7 +118,7 @@ window.IN_GoogleMaps = Array();
 
 var IN_initializeMaps = function() {
     var i;
-	var divElements = document.getElementsByTagName("div");
+    var divElements = document.getElementsByTagName("div");
     for ( i = 0 ; i < divElements.length ; i++ ) {
         if (divElements[i].className.match(new RegExp('(\\s|^)'+ 'in_GoogleMap' +'(\\s|$)'))) {
             window.IN_GoogleMaps[ divElements[i].id ] = new INGoogleMap(divElements[i]);
@@ -308,12 +308,12 @@ INGoogleMap.prototype = {
 
                 if(addressHTML) {
                     if(addressHTML!="") {
-                        var infowindow = new google.maps.InfoWindow({
+                        marker.infowindow = new google.maps.InfoWindow({
                             content: addressHTML
                         });
 
                         google.maps.event.addListener(googleMarker, 'click', function() {
-                            infowindow.open(_map,googleMarker);
+                            marker.infowindow.open(_map,googleMarker);
                         });
 
                     }
@@ -332,6 +332,13 @@ INGoogleMap.prototype = {
                         _map.setCenter(results[0].geometry.location);
                     }
                 });
+            }
+
+            marker.locateOnMap = function() {
+                var latlng = new google.maps.LatLng(marker.getAttribute("data-lat"),marker.getAttribute("data-lng"));
+                _map.setCenter(latlng);
+                _map.setZoom(18);
+                marker.infowindow.open(_map,googleMarker);
             }
         }
 
