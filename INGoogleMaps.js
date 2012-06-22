@@ -118,7 +118,7 @@ window.IN_GoogleMaps = Array();
 
 var IN_initializeMaps = function() {
     var i;
-    var divElements = document.getElementsByTagName("div");
+	var divElements = document.getElementsByTagName("div");
     for ( i = 0 ; i < divElements.length ; i++ ) {
         if (divElements[i].className.match(new RegExp('(\\s|^)'+ 'in_GoogleMap' +'(\\s|$)'))) {
             window.IN_GoogleMaps[ divElements[i].id ] = new INGoogleMap(divElements[i]);
@@ -149,7 +149,7 @@ function IN_setupGoogleMaps() {
     script.type = "text/javascript";
 
     // Ask Google to call IN_initializeMaps() after loading
-    script.src = "http://maps.googleapis.com/maps/api/js?key=" + apiKey + "&sensor=false&callback=IN_initializeMaps";
+    script.src = document.location.protocol + "//maps.googleapis.com/maps/api/js?key=" + apiKey + "&sensor=false&callback=IN_initializeMaps";
     document.body.appendChild(script);
 }
 
